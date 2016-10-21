@@ -12,6 +12,7 @@ public class GA{
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		
+		long startTime = System.currentTimeMillis();
 		//Read file;
 		BufferedReader in = new BufferedReader(new FileReader("instance_makespan.txt"));
 		String line ; 
@@ -30,6 +31,10 @@ public class GA{
 		} catch (IOException e) { e.printStackTrace(); }
 		
 		Population myPop = new Population(100, true);
+		myPop.sort();
+//		for (Individual ind : myPop.getIndividuals()) {
+//			System.out.println(ind.getFitness());
+//		}
 		// Create an initial population
         
         // Evolve our population until we reach an optimum solution
@@ -41,6 +46,9 @@ public class GA{
         
         Individual fittest = myPop.getFittest();
         System.out.println(fittest.toString());
+        
+        long endTime = System.currentTimeMillis();
+        System.out.println("Total execution time : " + (endTime - startTime));
 //        while (myPop.getFittest().getFitness() > FitnessCalc.getMaxFitness()) {
 //            generationCount++;
 //            System.out.println("Generation: " + generationCount + " Fittest: " + myPop.getFittest().getFitness());
@@ -49,8 +57,6 @@ public class GA{
 //        System.out.println("Solution found!");
 //        System.out.println("Generation: " + generationCount);
 //        System.out.println("Genes:");
-        
-
         
 //        System.out.println("Fitness :" + fittest.getFitness());
 //        
@@ -119,11 +125,6 @@ public class GA{
 	}
 	
 	//Generate random permutation of an array
-	
-
-	
-	
-	
 	
 	public void createChildren(int[][] ini)
 	{

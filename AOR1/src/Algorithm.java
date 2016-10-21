@@ -2,7 +2,7 @@
 public class Algorithm {
 	/* GA parameters */
     private static final double uniformRate = 0.5;
-    private static final double mutationRate = 0.5;
+    private static final double mutationRate = 0.3;
     private static final int tournamentSize = 5;
     private static final boolean elitism = true;
     
@@ -36,6 +36,8 @@ public class Algorithm {
         for (int i = elitismOffset; i < newPopulation.size(); i++) {
             mutate(newPopulation.getIndividual(i));
         }
+        
+        newPopulation.sort();
 
         return newPopulation;
     }
@@ -114,7 +116,7 @@ public class Algorithm {
         Population tournament = new Population(tournamentSize, false);
         // For each place in the tournament get a random individual
         for (int i = 0; i < tournamentSize; i++) {
-            int randomId = (int) (Math.random() * pop.size());
+            int randomId = (int) (Math.random() * pop.size()/2);
             tournament.saveIndividual(i, pop.getIndividual(randomId));
         }
         // Get the fittest
