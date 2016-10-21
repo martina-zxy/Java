@@ -59,7 +59,7 @@ public class Algorithm {
         int startPos = (int) (Math.random() * parent1.size());
         int endPos = (int) (Math.random() * parent1.size());
         
-     // Loop and add the sub tour from parent1 to our child
+     // Loop and add the subgene from parent1 to our child
         for (int i = 0; i < child.size(); i++) {
             // If our start position is less than the end position
             if (startPos < endPos && i > startPos && i < endPos) {
@@ -70,13 +70,13 @@ public class Algorithm {
             }
         }
         
-     // Loop through parent2's city tour
+     // Loop through parent2's gene
         for (int i = 0; i < parent2.size(); i++) {
-            // If child doesn't have the city add it
+            // If child doesn't have the gene add it
             if (!child.containsGene(parent2.getGene(i))) {
-                // Loop to find a spare position in the child's tour
+                // Loop to find a spare position in the child's gene
                 for (int ii = 0; ii < child.size(); ii++) {
-                    // Spare position found, add city
+                    // Spare position found, add gene
                     if (child.getGene(ii) == -1) {
                         child.setGene(ii, parent2.getGene(i));
                         break;

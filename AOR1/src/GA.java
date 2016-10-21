@@ -34,7 +34,7 @@ public class GA{
         
         // Evolve our population until we reach an optimum solution
         int generationCount = 0;
-        for (int i = 0; i < 20000; i++) {
+        for (int i = 0; i < 30000; i++) {
         	myPop = Algorithm.evolvePopulation(myPop);
         	System.out.println(myPop.getFittest().getFitness());
         }
