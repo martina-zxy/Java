@@ -29,12 +29,32 @@ public class GA{
 			in.close();
 		} catch (IOException e) { e.printStackTrace(); }
 		
-		Individual newIndividual = new Individual();
-        newIndividual.generateIndividual();
+		Population myPop = new Population(100, true);
+		// Create an initial population
         
-        System.out.println("Fitness :" + newIndividual.getFitness());
+        // Evolve our population until we reach an optimum solution
+        int generationCount = 0;
+        for (int i = 0; i < 20000; i++) {
+        	myPop = Algorithm.evolvePopulation(myPop);
+        	System.out.println(myPop.getFittest().getFitness());
+        }
+        
+        Individual fittest = myPop.getFittest();
+        System.out.println(fittest.toString());
+//        while (myPop.getFittest().getFitness() > FitnessCalc.getMaxFitness()) {
+//            generationCount++;
+//            System.out.println("Generation: " + generationCount + " Fittest: " + myPop.getFittest().getFitness());
+//            myPop = Algorithm.evolvePopulation(myPop);
+//        }
+//        System.out.println("Solution found!");
+//        System.out.println("Generation: " + generationCount);
+//        System.out.println("Genes:");
+        
+
+        
+//        System.out.println("Fitness :" + fittest.getFitness());
 //        
-//        Population myPop = new Population(50, true);
+//        
 //        
 //        int generationCount = 0;
 //        while (myPop.getFittest().getFitness() < FitnessCalc.getMaxFitness()) {

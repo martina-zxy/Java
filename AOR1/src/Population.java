@@ -16,11 +16,12 @@ public class Population {
         }
     }	
     
+    
     public Individual getFittest() {
         Individual fittest = individuals[0];
         // Loop through individuals to find fittest
         for (int i = 0; i < size(); i++) {
-            if (fittest.getFitness() <= individuals[i].getFitness()) {
+            if (fittest.getFitness() >= individuals[i].getFitness()) {
                 fittest = individuals[i];
             }
         }
@@ -43,7 +44,7 @@ public class Population {
     	return this.individuals;
     }
     
-    public Individual getSingleIndividual(int index) {
+    public Individual getIndividual(int index) {
         return individuals[index];
     }
 }

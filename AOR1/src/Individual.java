@@ -4,6 +4,7 @@ public class Individual {
 	
 	static int defaultUnitNo = 200;
     private int[] genes = new int[defaultUnitNo];
+    
     // Cache
     private int fitness = 0;
 
@@ -29,7 +30,7 @@ public class Individual {
         return genes;
     }
 
-    public void setGene(int index, byte value) {
+    public void setGene(int index, int value) {
         genes[index] = value;
         fitness = 0;
     }
@@ -44,6 +45,15 @@ public class Individual {
             fitness = FitnessCalc.getFitness(this);
         }
         return fitness;
+    }
+    
+    public boolean containsGene(int gene) {
+    	for (int i = 0; i < genes.length; i++) {
+    		if (genes[i] == gene) {
+    			return true;
+    		}
+    	}
+    	return false;
     }
 
     @Override
